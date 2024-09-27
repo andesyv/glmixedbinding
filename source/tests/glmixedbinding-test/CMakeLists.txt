@@ -12,7 +12,7 @@ find_package(${META_PROJECT_NAME} REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/..
 # 
 
 # Target name
-set(target glbinding-test)
+set(target glmixedbinding-test)
 
 if (NOT glfw3_FOUND)
     message("Test ${target} skipped: glfw3 not found")
@@ -72,8 +72,8 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
-    ${PROJECT_SOURCE_DIR}/../glbinding/source/
-    ${PROJECT_SOURCE_DIR}/../glbinding-aux/source/
+    ${PROJECT_SOURCE_DIR}/../glmixedbinding/source/
+    ${PROJECT_SOURCE_DIR}/../glmixedbinding-aux/source/
 )
 
 # 
@@ -84,8 +84,8 @@ target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
     glfw
-    ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::glbinding-aux
+    ${META_PROJECT_NAME}::glmixedbinding
+    ${META_PROJECT_NAME}::glmixedbinding-aux
     googletest::googletest
 )
 

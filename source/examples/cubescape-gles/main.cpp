@@ -3,23 +3,23 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Version.h>
-#include <glbinding/Binding.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/Binding.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/CallbackMask.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
 
 #include <CubeScape.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 namespace

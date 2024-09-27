@@ -209,7 +209,7 @@ protected:
 };
 
 
-} // namespace glbinding
+} // namespace glmixedbinding
 
 
 #include <glmixedbinding/Function.inl>

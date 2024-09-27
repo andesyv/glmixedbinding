@@ -88,8 +88,8 @@ target_link_libraries(${target}
     ${DEFAULT_LIBRARIES}
     ${OPENGL_LIBRARIES}
     glfw
-    ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::glbinding-aux
+    ${META_PROJECT_NAME}::glmixedbinding
+    ${META_PROJECT_NAME}::glmixedbinding-aux
     ${META_PROJECT_NAME}::cubescape-shared-gl
 )
 

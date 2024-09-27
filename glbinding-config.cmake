@@ -16,8 +16,8 @@ endif ()
 # List of modules
 set(MODULE_NAMES
     KHRplatform
-    glbinding
-    glbinding-aux
+    glmixedbinding
+    glmixedbinding-aux
 )
 
 
@@ -59,4 +59,4 @@ else()
 endif()
 
 # Signal success/failure to CMake
-set(glbinding_FOUND ${MODULE_FOUND})
+set(glmixedbinding_FOUND ${MODULE_FOUND})

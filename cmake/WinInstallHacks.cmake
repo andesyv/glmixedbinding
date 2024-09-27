@@ -1,5 +1,5 @@
 
-option(ENABLE_WIN_INSTALL_HACKS "Enable various workarounds for glbinding release targeting windows" OFF)
+option(ENABLE_WIN_INSTALL_HACKS "Enable various workarounds for glmixedbinding release targeting windows" OFF)
 
 if(WIN32 AND ENABLE_WIN_INSTALL_HACKS)
 

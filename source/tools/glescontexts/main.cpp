@@ -7,26 +7,26 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding/AbstractFunction.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding/Version.h>
-#include <glbinding/glbinding.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding/AbstractFunction.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/glmixedbinding.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
-const auto gles_versions = std::set<glbinding::Version>({
-    glbinding::Version(2, 0),
-    glbinding::Version(3, 0),
-    glbinding::Version(3, 1),
-    glbinding::Version(3, 2),
+const auto gles_versions = std::set<glmixedbinding::Version>({
+    glmixedbinding::Version(2, 0),
+    glmixedbinding::Version(3, 0),
+    glmixedbinding::Version(3, 1),
+    glmixedbinding::Version(3, 2),
 });
 
 void error(int errnum, const char * errmsg)
@@ -58,7 +58,7 @@ Version printVersionOfContextRequest(const Version & version)
     }
 
     glfwMakeContextCurrent(window);
-    glbinding::initialize(glfwGetProcAddress, true);
+    glmixedbinding::initialize(glfwGetProcAddress, true);
 
     auto result = aux::ContextInfo::version();
     glfwMakeContextCurrent(window);
@@ -110,7 +110,7 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+	glmixedbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     // print some gl infos (query)
 

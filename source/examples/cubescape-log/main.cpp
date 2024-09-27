@@ -7,24 +7,24 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/Version.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/CallbackMask.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/logging.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/logging.h>
 
 #include <CubeScape.h>
 #include <glutils.h>
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 namespace
@@ -98,10 +98,10 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+	glmixedbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
 	// Configure logging to also include parameter and return values
-	glbinding::addCallbackMask(CallbackMask::ParametersAndReturnValue);
+	glmixedbinding::addCallbackMask(CallbackMask::ParametersAndReturnValue);
 
     // Logging start
     aux::start();

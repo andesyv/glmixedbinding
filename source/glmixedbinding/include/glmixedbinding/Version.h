@@ -22,9 +22,9 @@ namespace glmixedbinding
 *
 *  Example code:
 *  @code{.cpp}
-*  const glbinding::Version currentVersion = glbinding::aux::ContextInfo::version();
+*  const glmixedbinding::Version currentVersion = glmixedbinding::aux::ContextInfo::version();
 *
-*  if (currentVersion >= glbinding::Version(3, 2))
+*  if (currentVersion >= glmixedbinding::Version(3, 2))
 *  {
 *      // do something
 *  }

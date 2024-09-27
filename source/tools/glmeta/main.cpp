@@ -4,17 +4,17 @@
 #include <set>
 #include <iomanip>
 
-#include <glbinding/Version.h>
+#include <glmixedbinding/Version.h>
 
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/extension.h>
+#include <glmixedbinding/gl/enum.h>
+#include <glmixedbinding/gl/extension.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 using namespace gl; 
-using namespace glbinding;
+using namespace glmixedbinding;
 
 int main(int, char * [])
 {

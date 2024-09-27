@@ -3,23 +3,23 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/Version.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/CallbackMask.h>
 
-#include <glbinding/gl/gl.h>
-#include <glbinding/getProcAddress.h>
+#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/getProcAddress.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/debug.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/debug.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 void error(int errnum, const char * errmsg)
@@ -66,8 +66,8 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window1);
 
-    glbinding::initialize(0, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
-    glbinding::aux::enableGetErrorCallback();
+    glmixedbinding::initialize(0, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glmixedbinding::aux::enableGetErrorCallback();
 
     // Initialize window 2
 
@@ -82,8 +82,8 @@ int main(int, char *[])
 
     glfwSetKeyCallback(window2, key_callback);
 
-    glbinding::initialize(1, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
-    glbinding::aux::enableGetErrorCallback();
+    glmixedbinding::initialize(1, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glmixedbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)
 
@@ -106,7 +106,7 @@ int main(int, char *[])
             glfwGetFramebufferSize(window1, &width, &height);
 
             glfwMakeContextCurrent(window1);
-            glbinding::useContext(0);
+            glmixedbinding::useContext(0);
             glClearColor(1.0f, 0.0f, activeWindow / 15.0f, 0.0f);
             glViewport(0, 0, width, height);
 
@@ -119,7 +119,7 @@ int main(int, char *[])
             glfwGetFramebufferSize(window2, &width, &height);
 
             glfwMakeContextCurrent(window2);
-            glbinding::useContext(1);
+            glmixedbinding::useContext(1);
             glClearColor(0.0f, 1.0f, activeWindow / 15.0f, 0.0f);
             glViewport(0, 0, width, height);
 

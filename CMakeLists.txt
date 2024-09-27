@@ -12,11 +12,11 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 #
 
 # Use PROJECT_IS_TOP_LEVEL once we bump the required CMake version up to 3.21
-get_directory_property(GLBINDING_HAS_PARENT PARENT_DIRECTORY)
-if(GLBINDING_HAS_PARENT)
-  set(GLBINDING_BUILD_AS_ROOT Off)
+get_directory_property(GLMIXEDBINDING_HAS_PARENT PARENT_DIRECTORY)
+if(GLMIXEDBINDING_HAS_PARENT)
+  set(GLMIXEDBINDING_BUILD_AS_ROOT Off)
 else()
-  set(GLBINDING_BUILD_AS_ROOT On)
+  set(GLMIXEDBINDING_BUILD_AS_ROOT On)
 endif()
 
 
@@ -54,7 +54,6 @@ endif()
 # Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
 include(cmake/HealthCheck.cmake)
-include(cmake/GenerateTemplateExportHeader.cmake)
 
 
 # 
@@ -62,13 +61,11 @@ include(cmake/GenerateTemplateExportHeader.cmake)
 # 
 
 # Meta information about the project
-set(META_PROJECT_NAME        "glbinding")
-set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
-set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
-set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
-set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "3")
-set(META_VERSION_MINOR       "3")
+set(META_PROJECT_NAME        "glmixedbinding")
+set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL / OpenGL ES 2 APIs, generated using the gl.xml specification.")
+set(META_AUTHOR_DOMAIN       "https://github.com/andesyv/glmixedbinding/")
+set(META_VERSION_MAJOR       "0")
+set(META_VERSION_MINOR       "1")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
@@ -91,7 +88,7 @@ option(OPTION_BUILD_TOOLS             "Build tools."                            
 option(OPTION_BUILD_EXAMPLES          "Build examples."                                           ON)
 option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                 OFF)
 option(OPTION_BUILD_CHECK             "Enable source code check targets"                          OFF)
-option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."    OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glmixedbinding with in-source KHR headers."    OFF)
 option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)"  OFF)
 option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git source repository" ON)
 
@@ -108,7 +105,7 @@ set(IDE_FOLDER "")
 project(${META_PROJECT_NAME} C CXX)
 
 # Get git revision
-if (OPTION_USE_GIT_INFORMATION AND GLBINDING_BUILD_AS_ROOT)
+if (OPTION_USE_GIT_INFORMATION AND GLMIXEDBINDING_BUILD_AS_ROOT)
   get_git_head_revision(GIT_REFSPEC GIT_SHA1)
   string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
   if(NOT GIT_SHA1)

@@ -3,25 +3,25 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/Version.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/CallbackMask.h>
 
-#include <glbinding/gl/gl.h>
-#include <glbinding/getProcAddress.h>
+#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/getProcAddress.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/debug.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/debug.h>
 
 #include <CubeScape.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 namespace
@@ -100,8 +100,8 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
-    glbinding::aux::enableGetErrorCallback();
+    glmixedbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glmixedbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)
 

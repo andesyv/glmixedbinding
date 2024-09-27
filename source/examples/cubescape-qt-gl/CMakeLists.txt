@@ -102,8 +102,8 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::glbinding-aux
+    ${META_PROJECT_NAME}::glmixedbinding
+    ${META_PROJECT_NAME}::glmixedbinding-aux
     ${META_PROJECT_NAME}::cubescape-shared-gl
     Qt5::Core
     Qt5::Gui

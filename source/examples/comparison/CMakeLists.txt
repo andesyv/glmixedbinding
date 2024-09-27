@@ -39,8 +39,8 @@ set(sources
     gltest_data.inl
     gltest_error.inl
 
-    glbinding.cpp
-    glbinding.h
+    glmixedbinding.cpp
+    glmixedbinding.h
     glew.cpp
     glew.h
 
@@ -97,8 +97,8 @@ target_link_libraries(${target}
     glfw
     ${OPENGL_LIBRARIES}
     ${GLEW_LIBRARY}
-    ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::glbinding-aux
+    ${META_PROJECT_NAME}::glmixedbinding
+    ${META_PROJECT_NAME}::glmixedbinding-aux
 )
 
 

@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 
 
-#include <glbinding/gl45core/boolean.h>
+#include <glmixedbinding/gl45core/boolean.h>
 
 
 using namespace gl;

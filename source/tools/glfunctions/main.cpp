@@ -6,21 +6,21 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
-#include <glbinding/glbinding.h>
-#include <glbinding/Binding.h>
+#include <glmixedbinding/AbstractFunction.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/Binding.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 void error(int errnum, const char * errmsg)
@@ -60,7 +60,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize(glfwGetProcAddress, true);
+    glmixedbinding::initialize(glfwGetProcAddress, true);
 
     // gather available extensions
 
@@ -133,7 +133,7 @@ int main()
 
     // show unknown extensions
 
-    std::cout << std::endl << std::endl << "[EXTENSIONS NOT COVERED BY GLBINDING]" << std::endl << std::endl;
+    std::cout << std::endl << std::endl << "[EXTENSIONS NOT COVERED BY GLMIXEDBINDING]" << std::endl << std::endl;
     for (const auto & ext : unknownExts)
         std::cout << ext << std::endl;
 
@@ -156,7 +156,7 @@ int main()
 
     std::cout << std::endl;
     std::cout << "# Extensions:    " << (supportedExts.size() + unknownExts.size()) << " of " << allExts.size() + unknownExts.size() << " supported"
-        << " (" << unknownExts.size() << " of which are unknown to glbinding)" << std::endl;
+        << " (" << unknownExts.size() << " of which are unknown to glmixedbinding)" << std::endl;
 
     for (auto p : extsByVer)
     {

@@ -4,16 +4,16 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Meta.h>
-#include <glbinding/ContextInfo.h>
-#include <glbinding/Version.h>
-#include <glbinding/Binding.h>
+#include <glmixedbinding/AbstractFunction.h>
+#include <glmixedbinding/Meta.h>
+#include <glmixedbinding/ContextInfo.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/Binding.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 class MultiContext_test : public testing::Test
 {

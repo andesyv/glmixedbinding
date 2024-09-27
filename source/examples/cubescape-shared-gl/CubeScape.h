@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include <glbinding/gl/types.h>
+#include <glmixedbinding/gl/types.h>
 
 #include <chrono>
 

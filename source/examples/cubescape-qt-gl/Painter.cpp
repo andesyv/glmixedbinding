@@ -1,9 +1,9 @@
 
 #include "Painter.h"
 
-#include <glbinding/glbinding.h>
+#include <glmixedbinding/glmixedbinding.h>
 
-#include <glbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/ContextInfo.h>
 
 #include <CubeScape.h>
 
@@ -24,7 +24,7 @@ void Painter::initialize(ProcAddressGetter procAddressCallback)
     if (m_initialized)
         return;
 
-    glbinding::initialize(procAddressCallback, false); // only resolve functions that are actually used (lazy)
+    glmixedbinding::initialize(procAddressCallback, false); // only resolve functions that are actually used (lazy)
 
     m_cubescape = new CubeScape();
 

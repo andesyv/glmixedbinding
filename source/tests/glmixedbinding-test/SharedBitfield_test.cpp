@@ -1,11 +1,11 @@
 
 #include <gmock/gmock.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding/SharedBitfield.h>
+#include <glmixedbinding/SharedBitfield.h>
 
-using namespace glbinding;
+using namespace glmixedbinding;
 
 enum class A
 {

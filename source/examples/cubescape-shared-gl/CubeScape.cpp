@@ -10,7 +10,7 @@
 #include <cpplocate/cpplocate.h>
 #endif
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
 #include "glutils.h"
 #include "RawFile.h"
@@ -37,7 +37,7 @@ bool readFile(const std::string & filePath, std::string & content)
 std::string determineDataPath()
 {
 #ifdef cpplocate_FOUND
-    std::string path = cpplocate::locatePath("data/cubescape", "share/glbinding/cubescape", reinterpret_cast<void *>(&gl::glCreateShader));
+    std::string path = cpplocate::locatePath("data/cubescape", "share/glmixedbinding/cubescape", reinterpret_cast<void *>(&gl::glCreateShader));
     if (path.empty()) path = "./data";
     else              path = path + "/data";
 #else

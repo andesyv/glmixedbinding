@@ -5,23 +5,23 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
-#include <glbinding/CallbackMask.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/Binding.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/AbstractFunction.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/CallbackMask.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/Binding.h>
 
-#include <glbinding/gl32/gl.h>
+#include <glmixedbinding/gl32/gl.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 
 using namespace gl32;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 void error(int errnum, const char * errmsg)
 {
@@ -64,7 +64,7 @@ int main()
         return -1;
     }
 
-    glbinding::addContextSwitchCallback([](ContextHandle handle){
+    glmixedbinding::addContextSwitchCallback([](ContextHandle handle){
         std::cout << "Activating context " << handle << std::endl;
     });
 
@@ -72,16 +72,16 @@ int main()
 
     // print some gl infos (query)
 
-	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+	glmixedbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
-    glbinding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+    glmixedbinding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
-    glbinding::setAfterCallback([](const glbinding::FunctionCall & call) {
+    glmixedbinding::setAfterCallback([](const glmixedbinding::FunctionCall & call) {
         std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)

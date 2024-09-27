@@ -7,20 +7,20 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
-#include <glbinding/glbinding.h>
+#include <glmixedbinding/AbstractFunction.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/glmixedbinding.h>
 
-#include <glbinding/gl/gl.h>
+#include <glmixedbinding/gl/gl.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 void error(int errnum, const char * errmsg)
@@ -139,7 +139,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-	glbinding::initialize(glfwGetProcAddress, true);
+	glmixedbinding::initialize(glfwGetProcAddress, true);
 
     printInfos();
 

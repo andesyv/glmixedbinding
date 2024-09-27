@@ -5,18 +5,18 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Version.h>
+#include <glmixedbinding/Version.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/logging.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/logging.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
 
 #include "Timer.h"
 #include <thread>
 #include <fstream>
 
-#include "glbinding.h"
+#include "glmixedbinding.h"
 #include "glew.h"
 
 
@@ -31,8 +31,8 @@ void compare()
 
     std::cout <<  std::endl << "test: initialize bindings ..." << std::endl;
 
-    timer.start("      glbinding ");
-    glbinding_init();
+    timer.start("      glmixedbinding ");
+    glmixedbinding_init();
 
     timer.restart("      glew      ");
     glew_init();
@@ -41,9 +41,9 @@ void compare()
 
 
     std::cout << std::endl
-        << "OpenGL Version:  " << glbinding::aux::ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << glbinding::aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << glbinding::aux::ContextInfo::renderer() << std::endl;
+        << "OpenGL Version:  " << glmixedbinding::aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << glmixedbinding::aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << glmixedbinding::aux::ContextInfo::renderer() << std::endl;
 
 
     std::cout << std::endl << "prep: warm-up ..." << std::endl;
@@ -53,9 +53,9 @@ void compare()
     for (int i = 0; i < ITERATIONS_WARMUP; ++i)
         glew_test();
 
-    std::cout << "      glbinding " << std::endl;
+    std::cout << "      glmixedbinding " << std::endl;
     for (int i = 0; i < ITERATIONS_WARMUP; ++i)
-        glbinding_test();
+        glmixedbinding_test();
 
     timer.setSteps(24 * ITERATIONS);
     
@@ -66,44 +66,44 @@ void compare()
     for (int i = 0; i < ITERATIONS; ++i)
         glew_test();
 
-    long double glew_avg = timer.restart("      glbinding ");
+    long double glew_avg = timer.restart("      glmixedbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
-        glbinding_test();
+        glmixedbinding_test();
 
-    long double glbinding_avg = timer.stop();
+    long double glmixedbinding_avg = timer.stop();
 
  
     std::cout << std::endl << "test: again, now with error checking ..." << std::endl;
 
     glew_error(true);
-    glbinding_error(true);
+    glmixedbinding_error(true);
 
     timer.start("      glew      ");
     for (int i = 0; i < ITERATIONS; ++i)
         glew_test();
 
-    long double glew_avg_err = timer.restart("      glbinding ");
+    long double glew_avg_err = timer.restart("      glmixedbinding ");
     for (int i = 0; i < ITERATIONS; ++i)
-        glbinding_test();
+        glmixedbinding_test();
 
-    long double glbinding_avg_err = timer.stop();
-    glbinding_error(false);
+    long double glmixedbinding_avg_err = timer.stop();
+    glmixedbinding_error(false);
 
     std::cout << std::endl << "test: again, now with logging ..." << std::endl;
-    glbinding::aux::start("logs/comparison");
-    timer.start("      glbinding ");
+    glmixedbinding::aux::start("logs/comparison");
+    timer.start("      glmixedbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
-        glbinding_test();
+        glmixedbinding_test();
     
-    long double glbinding_avg_log = timer.stop();
-    glbinding::aux::stop();
+    long double glmixedbinding_avg_log = timer.stop();
+    glmixedbinding::aux::stop();
 
 
-    std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;
-    std::cout << std::endl << "glbinding/glew decrease (error checks):  " << (glbinding_avg_err / glew_avg_err - 1.0) * 100.0 << "%" << std::endl;
-    std::cout << std::endl << "glbinding decrease with logging:         " << (glbinding_avg_log / glbinding_avg  - 1.0) * 100.0 << "%" << std::endl;
+    std::cout << std::endl << "glmixedbinding/glew decrease:                 " << (glmixedbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;
+    std::cout << std::endl << "glmixedbinding/glew decrease (error checks):  " << (glmixedbinding_avg_err / glew_avg_err - 1.0) * 100.0 << "%" << std::endl;
+    std::cout << std::endl << "glmixedbinding decrease with logging:         " << (glmixedbinding_avg_log / glmixedbinding_avg  - 1.0) * 100.0 << "%" << std::endl;
 
     std::cout << std::endl << "finalizing ..." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(3));

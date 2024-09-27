@@ -7,7 +7,7 @@
 
 class CubeScape;
 
-// wrapper for cubescape to avoid overlapping qopengl and glbinding includes
+// wrapper for cubescape to avoid overlapping qopengl and glmixedbinding includes
 
 // Note: Qt could use a NO_GL_FUNCTIONS define (similar to GLFW_INCLUDE_NONE), but for
 //       now the QOpenGLContext is tightly coupled with qopengl.h and QOpenGLFunctions.

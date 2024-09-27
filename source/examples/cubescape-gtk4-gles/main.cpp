@@ -3,25 +3,25 @@
 
 #include <gtk/gtk.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/Version.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
+#include <glmixedbinding/glmixedbinding.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/FunctionCall.h>
+#include <glmixedbinding/CallbackMask.h>
 
-#include <glbinding/gl/gl.h>
-#include <glbinding/getProcAddress.h>
+#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/getProcAddress.h>
 
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/debug.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/debug.h>
 
 #include <CubeScape.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 
 namespace
@@ -75,9 +75,9 @@ gboolean key_press(GtkEventController *controller, guint keyval, guint keycode, 
 void realize(GtkGLArea *glarea) {
     gtk_gl_area_make_current(glarea);
     
-    // initialize glbinding
-    glbinding::initialize(glbinding::getProcAddress, true); // only resolve functions that are actually used (lazy)
-    glbinding::aux::enableGetErrorCallback();
+    // initialize glmixedbinding
+    glmixedbinding::initialize(glmixedbinding::getProcAddress, true); // only resolve functions that are actually used (lazy)
+    glmixedbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)
     std::cout << std::endl
@@ -177,7 +177,7 @@ int main(int argc, char * argv[])
     flags = G_APPLICATION_FLAGS_NONE;
     #endif
 
-    app = gtk_application_new("org.glbinding.example-gtk4-gles", flags);
+    app = gtk_application_new("org.glmixedbinding.example-gtk4-gles", flags);
     g_signal_connect(app, "activate", G_CALLBACK (activate), NULL);
     status = g_application_run(G_APPLICATION (app), argc, argv);
     g_object_unref(app);

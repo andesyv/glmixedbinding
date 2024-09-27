@@ -7,21 +7,21 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Version.h>
-#include <glbinding/glbinding.h>
+#include <glmixedbinding/Version.h>
+#include <glmixedbinding/glmixedbinding.h>
 
-#include <glbinding/gl/types.h>
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/functions.h>
+#include <glmixedbinding/gl/types.h>
+#include <glmixedbinding/gl/enum.h>
+#include <glmixedbinding/gl/functions.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/types_to_string.h>
+#include <glmixedbinding-aux/Meta.h>
+#include <glmixedbinding-aux/ContextInfo.h>
+#include <glmixedbinding-aux/ValidVersions.h>
+#include <glmixedbinding-aux/types_to_string.h>
 
 
 using namespace gl;
-using namespace glbinding;
+using namespace glmixedbinding;
 
 namespace
 {
@@ -169,15 +169,15 @@ namespace
         static const size_t MAX_PSTRING_LENGTH { 37 };    // actually, it's 44 / average is 23,
                                                           // but 37 works for 452 of 462 glGet enums (98%)
 
-        const std::string pstring{ glbinding::aux::Meta::getString(pname) };
-        const std::string spaces{ std::string((glbinding::aux::Meta::getString(pname).length() > 37) ? 0 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
+        const std::string pstring{ glmixedbinding::aux::Meta::getString(pname) };
+        const std::string spaces{ std::string((glmixedbinding::aux::Meta::getString(pname).length() > 37) ? 0 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
 
         if (glGetError() != gl::GL_NO_ERROR)
         {
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
         }
-        std::cout << "\t" << glbinding::aux::Meta::getString(pname) << spaces << " = " << string<T, count>(data);
+        std::cout << "\t" << glmixedbinding::aux::Meta::getString(pname) << spaces << " = " << string<T, count>(data);
         return true;
     }
 
@@ -189,7 +189,7 @@ namespace
         static const size_t MAX_PSTRING_LENGTH{ 37 };    // actually, it's 44 / average is 23,
         // but 37 works for 452 of 462 glGet enums (98%)
 
-        const std::string pstring{ glbinding::aux::Meta::getString(pname) };
+        const std::string pstring{ glmixedbinding::aux::Meta::getString(pname) };
         const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
 
         if (glGetError() != gl::GL_NO_ERROR)
@@ -197,7 +197,7 @@ namespace
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
         }
-        std::cout << "\t" << glbinding::aux::Meta::getString(pname) << spaces << " = " << string<T>(data, count);
+        std::cout << "\t" << glmixedbinding::aux::Meta::getString(pname) << spaces << " = " << string<T>(data, count);
         return true;
     }
 
@@ -340,7 +340,7 @@ int main(int argc, const char * argv[])
 
     glfwMakeContextCurrent(window);
 
-	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+	glmixedbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     std::cout << std::endl << "[QUERYING STATE VALUES]" << std::endl;
 
