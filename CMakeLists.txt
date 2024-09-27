@@ -83,7 +83,6 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                 ON)
 option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."    OFF)
 option(OPTION_BUILD_TESTS             "Build tests."                                              OFF)
-option(OPTION_BUILD_DOCS              "Build documentation."                                      OFF)
 option(OPTION_BUILD_TOOLS             "Build tools."                                              ON)
 option(OPTION_BUILD_EXAMPLES          "Build examples."                                           ON)
 option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                 OFF)
@@ -212,8 +211,6 @@ endif()
 # 
 
 add_subdirectory(source)
-add_subdirectory(docs)
-add_subdirectory(deploy)
 
 
 # 

@@ -33,9 +33,6 @@ then
     echo "# Enable examples" >> ".localconfig/default"
     echo "#CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_EXAMPLES:BOOL=ON\"" >> ".localconfig/default"
     echo "" >> ".localconfig/default"
-    echo "# Enable documentation" >> ".localconfig/default"
-    echo "#CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_DOCS:BOOL=ON\"" >> ".localconfig/default"
-    echo "" >> ".localconfig/default"
     echo "# Disable tests" >> ".localconfig/default"
     echo "#CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_TESTS:BOOL=OFF\"" >> ".localconfig/default"
     echo "" >> ".localconfig/default"
@@ -67,7 +64,6 @@ then
     echo "" >> ".localconfig/pack"
     echo "# Enable all components for the package" >> ".localconfig/pack"
     echo "CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_EXAMPLES:BOOL=ON\"" >> ".localconfig/pack"
-    echo "CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_DOCS:BOOL=ON\"" >> ".localconfig/pack"
     echo "CMAKE_OPTIONS=\"\${CMAKE_OPTIONS} -DOPTION_BUILD_TESTS:BOOL=OFF\"" >> ".localconfig/pack"
 
     echo "Default configuration has been written to .localconfig"
