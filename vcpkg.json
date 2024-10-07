@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "glmixedbinding",
+  "features": {
+    "examples": {
+      "description": "Build examples",
+      "dependencies": [
+        {
+          "name": "glfw3",
+          "version>=": "3.2"
+        }
+      ]
+    }
+  }
+}
