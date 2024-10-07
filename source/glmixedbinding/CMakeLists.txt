@@ -134,7 +134,7 @@ set(sources
 # also use them for GCC for reduced project setup complexity
 
 file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
-file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+file(GLOB splitted_functions_sources ${source_path}/glmixed/functions_*.cpp)
 
 list(APPEND sources 
     ${splitted_binding_sources}

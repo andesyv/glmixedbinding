@@ -2,7 +2,6 @@
 #include <glmixedbinding/getProcAddress.h>
 
 #include <cassert>
-#include <string_view>
 
 #ifdef SYSTEM_WINDOWS
     #include <string>
@@ -15,53 +14,50 @@
 
 namespace glmixedbinding {
 
-    #define SYSTEM_WINDOWS
-
 #ifdef SYSTEM_WINDOWS
-
-namespace {
-    template <std::string_view LibraryName>
-    ProcAddress getProcAddressImpl(const char* name)
-    {
-        static auto module = LoadLibrary(LibraryName.c_str());
-        if (module == nullptr)
-        {
-            return nullptr;
-        }
-
-        // Prevent static linking of opengl32
-        static auto wglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(module, "wglGetProcAddress"));
-        assert(wglGetProcAddress_ != nullptr);
-
-        auto procAddress = wglGetProcAddress_(name);
-        if (procAddress != nullptr)
-        {
-            return reinterpret_cast<ProcAddress>(procAddress);
-        }
-
-        procAddress = (void *) ::GetProcAddress(module, name);
-        if (procAddress != nullptr)
-        {
-            return reinterpret_cast<ProcAddress>(procAddress);
-        }
-
-        return nullptr;
-    }
-}
 
 ProcAddress getProcAddress(const char * name)
 {
     // With two APIs we have no clue which one should be used by default. So just load any of the two and use the first one available.
-    auto glProcAddress = getProcAddressImpl<"OPENGL32.DLL">(name);
-    if (glProcAddress != nullptr)
+    static auto glModule = LoadLibrary(_T("OPENGL32.DLL"));
+    if (glModule != nullptr)
     {
-        return glProcAddress;
+        // Prevent static linking of opengl32
+        static auto glWglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glModule, "wglGetProcAddress"));
+        assert(glWglGetProcAddress_ != nullptr);
+
+        auto procAddress = glWglGetProcAddress_(name);
+        if (procAddress != nullptr)
+        {
+            return reinterpret_cast<ProcAddress>(procAddress);
+        }
+
+        procAddress = (void *) ::GetProcAddress(glModule, name);
+        if (procAddress != nullptr)
+        {
+            return reinterpret_cast<ProcAddress>(procAddress);
+        }
     }
 
-    auto glesProcAddress = getProcAddressImpl<"libGLESv2.DLL">(name);
-    if (glesProcAddress != nullptr)
+
+    static auto glesModule = LoadLibrary(_T("libGLESv2.DLL"));
+    if (glesModule != nullptr)
     {
-        return glesProcAddress;
+        // Prevent static linking of opengl32
+        static auto glesWglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glesModule, "wglGetProcAddress"));
+        assert(glesWglGetProcAddress_ != nullptr);
+
+        auto procAddress = glesWglGetProcAddress_(name);
+        if (procAddress != nullptr)
+        {
+            return reinterpret_cast<ProcAddress>(procAddress);
+        }
+
+        procAddress = (void *) ::GetProcAddress(glesModule, name);
+        if (procAddress != nullptr)
+        {
+            return reinterpret_cast<ProcAddress>(procAddress);
+        }
     }
 
     return nullptr;
