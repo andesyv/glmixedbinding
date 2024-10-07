@@ -56,17 +56,17 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/nogl.h
+    ${include_path}/noglmixed.h
     ${include_path}/getProcAddress.h # TODO: Fix loader for mixed APIs
 
-    ${include_path}/gl/bitfield.h
-    ${include_path}/gl/boolean.h
-    ${include_path}/gl/enum.h
-    ${include_path}/gl/extension.h
-    ${include_path}/gl/functions.h
-    ${include_path}/gl/types.h
-    ${include_path}/gl/types.inl
-    ${include_path}/gl/values.h
+    ${include_path}/glmixed/bitfield.h
+    ${include_path}/glmixed/boolean.h
+    ${include_path}/glmixed/enum.h
+    ${include_path}/glmixed/extension.h
+    ${include_path}/glmixed/functions.h
+    ${include_path}/glmixed/types.h
+    ${include_path}/glmixed/types.inl
+    ${include_path}/glmixed/values.h
     
     ${include_path}/glmixedbinding.h
 
@@ -86,8 +86,8 @@ set(headers
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractState.h
     ${include_path}/AbstractValue.h
-    ${include_path}/Boolean8.h
-    ${include_path}/Boolean8.inl
+    ${include_path}/Boolean32.h
+    ${include_path}/Boolean32.inl
     ${include_path}/CallbackMask.h
     ${include_path}/CallbackMask.inl
     ${include_path}/ContextHandle.h
@@ -110,14 +110,14 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/getProcAddress.cpp # TODO: Fix loader for mixed APIs
+    ${source_path}/getProcAddress.cpp
     ${source_path}/glmixedbinding.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
 
     ${source_path}/glmixedbinding.cpp
     
-    ${source_path}/gl/functions-patches.cpp # TODO: function-patches.cpp also fails with the generator
+    ${source_path}/glmixed/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
     
