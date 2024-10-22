@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install cmake
-        run: sudo apt install -y cmake libgl1-mesa-dev libegl1-mesa-dev libglfw3-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev
+        run: sudo apt install -y cmake libgl1-mesa-dev libegl1-mesa-dev libglfw3-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev pkg-config
       - name: configure
         run: ./configure && ./configure
       - name: make
