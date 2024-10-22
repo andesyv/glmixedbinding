@@ -118,7 +118,7 @@ int main(int argc, char * argv[])
         << "OpenGL ES Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL ES Vendor:   " << aux::ContextInfo::vendor() << std::endl
         << "OpenGL ES Renderer: " << aux::ContextInfo::renderer() << std::endl 
-        << "OpenGL Revision:    " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Revision:    " << aux::Meta::glmixedRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;
