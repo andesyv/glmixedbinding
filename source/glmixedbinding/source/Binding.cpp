@@ -320,7 +320,7 @@ void Binding::neglectState(const int p)
 
     /*
      * Todo: reintegrate dynamic shrinking of state vectors.
-     * Further details: https://github.com/cginternals/glmixedbinding/issues/198
+     * Further details: https://github.com/cginternals/glbinding/issues/198
      */
     for (AbstractFunction * function : Binding::functions())
     {
