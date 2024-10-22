@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glmixedbinding/glmixedbinding.h>
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include <stdexcept>
 
@@ -49,8 +49,8 @@ TEST(Regression_198, releaseContext)  // releaseContext(ctx) wipes out functions
 
         glfwMakeContextCurrent(context_A);
         glmixedbinding::useContext(context_A_gl);
-        gl::GLint major = 0;
-        glGetIntegerv(gl::GL_MAJOR_VERSION, &major);
+        glmixed::GLint major = 0;
+        glGetIntegerv(glmixed::GL_MAJOR_VERSION, &major);
 
         glmixedbinding::releaseContext(context_A_gl);
         glfwDestroyWindow(context_A);

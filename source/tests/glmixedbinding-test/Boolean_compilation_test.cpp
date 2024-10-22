@@ -5,13 +5,13 @@
 #include <glmixedbinding/gl45core/boolean.h>
 
 
-using namespace gl;
+using namespace glmixed;
 
 
 TEST(Boolean, Compilation)
 {
     const gl45core::GLboolean b1 = gl45core::GL_TRUE;
-    const gl::GLboolean b2 = gl::GL_TRUE;
+    const glmixed::GLboolean b2 = glmixed::GL_TRUE;
     const GLboolean b3 = GL_TRUE;
 
     (void)b1;

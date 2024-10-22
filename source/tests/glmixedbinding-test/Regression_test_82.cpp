@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 
 
-#include <glmixedbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
+#include <glmixedbinding/glmixed/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
 
 #include <glmixedbinding/gl45core/types.h>
 #include <glmixedbinding/gl45core/functions.h>

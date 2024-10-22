@@ -8,11 +8,11 @@
 #include <glmixedbinding-aux/Meta.h>
 
 
-#include <glmixedbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
+#include <glmixedbinding/glmixed/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
 
-#include <glmixedbinding/gl/types.h>
-#include <glmixedbinding/gl/functions.h>
-#include <glmixedbinding/gl/enum.h>
+#include <glmixedbinding/glmixed/types.h>
+#include <glmixedbinding/glmixed/functions.h>
+#include <glmixedbinding/glmixed/enum.h>
 
 #include <glmixedbinding-aux/types_to_string.h>
 
@@ -52,13 +52,13 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
         return glfwGetProcAddress(name);
     });
 
-    ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
+    ASSERT_EQ(glmixed::GL_NO_ERROR, glmixed::glGetError());
 
     // "Death Test": resolve a basic OpenGL of return type GLboolean (with underlying type char)
     // note: this might work on some OpenGL drivers without expected failure (try NVIDIA for expected failure on windows x64)
-    ASSERT_NO_THROW(gl::glIsProgram(0));    
+    ASSERT_NO_THROW(glmixed::glIsProgram(0));    
 
-    ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
+    ASSERT_EQ(glmixed::GL_NO_ERROR, glmixed::glGetError());
 
     glfwMakeContextCurrent(nullptr);
     glfwTerminate();
@@ -70,8 +70,8 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
 TEST(Regression_185, GetString)  // Static initializiation issue ...
 {
-    ASSERT_EQ(glmixedbinding::aux::Meta::getString(gl::GL_TRUE), "GL_TRUE");
-    ASSERT_EQ(glmixedbinding::aux::Meta::getString(gl::GL_FALSE), "GL_FALSE");
+    ASSERT_EQ(glmixedbinding::aux::Meta::getString(glmixed::GL_TRUE), "GL_TRUE");
+    ASSERT_EQ(glmixedbinding::aux::Meta::getString(glmixed::GL_FALSE), "GL_FALSE");
 
     SUCCEED();
 }

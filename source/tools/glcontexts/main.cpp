@@ -13,13 +13,13 @@
 #include <glmixedbinding/Version.h>
 #include <glmixedbinding/glmixedbinding.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include <glmixedbinding-aux/ValidVersions.h>
 #include <glmixedbinding-aux/types_to_string.h>
 
 
-using namespace gl;
+using namespace glmixed;
 using namespace glmixedbinding;
 
 void error(int errnum, const char * errmsg)

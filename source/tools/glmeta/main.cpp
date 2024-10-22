@@ -6,14 +6,14 @@
 
 #include <glmixedbinding/Version.h>
 
-#include <glmixedbinding/gl/enum.h>
-#include <glmixedbinding/gl/extension.h>
+#include <glmixedbinding/glmixed/enum.h>
+#include <glmixedbinding/glmixed/extension.h>
 
 #include <glmixedbinding-aux/Meta.h>
 #include <glmixedbinding-aux/ValidVersions.h>
 #include <glmixedbinding-aux/types_to_string.h>
 
-using namespace gl; 
+using namespace glmixed; 
 using namespace glmixedbinding;
 
 int main(int, char * [])
@@ -67,7 +67,7 @@ int main(int, char * [])
     }
 
     std::cout << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Revision: " << aux::Meta::glmixedRevision() << " (gl.xml)" << std::endl << std::endl;
     
     return 0;
 }

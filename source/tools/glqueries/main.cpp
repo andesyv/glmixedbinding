@@ -10,9 +10,9 @@
 #include <glmixedbinding/Version.h>
 #include <glmixedbinding/glmixedbinding.h>
 
-#include <glmixedbinding/gl/types.h>
-#include <glmixedbinding/gl/enum.h>
-#include <glmixedbinding/gl/functions.h>
+#include <glmixedbinding/glmixed/types.h>
+#include <glmixedbinding/glmixed/enum.h>
+#include <glmixedbinding/glmixed/functions.h>
 
 #include <glmixedbinding-aux/Meta.h>
 #include <glmixedbinding-aux/ContextInfo.h>
@@ -20,7 +20,7 @@
 #include <glmixedbinding-aux/types_to_string.h>
 
 
-using namespace gl;
+using namespace glmixed;
 using namespace glmixedbinding;
 
 namespace
@@ -172,7 +172,7 @@ namespace
         const std::string pstring{ glmixedbinding::aux::Meta::getString(pname) };
         const std::string spaces{ std::string((glmixedbinding::aux::Meta::getString(pname).length() > 37) ? 0 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
 
-        if (glGetError() != gl::GL_NO_ERROR)
+        if (glGetError() != glmixed::GL_NO_ERROR)
         {
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
@@ -192,7 +192,7 @@ namespace
         const std::string pstring{ glmixedbinding::aux::Meta::getString(pname) };
         const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
 
-        if (glGetError() != gl::GL_NO_ERROR)
+        if (glGetError() != glmixed::GL_NO_ERROR)
         {
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
@@ -271,7 +271,7 @@ namespace
         std::array<T, count> data;
         for (int i = 0; i < maxCounti; ++i)
         {
-            request<T, count>(static_cast<gl::GLenum>(static_cast<int>(pname)+i), data);
+            request<T, count>(static_cast<glmixed::GLenum>(static_cast<int>(pname)+i), data);
 
             if (!expected.empty() && expected != data)
                 std::cout << ", expected " << string<T, count>(expected);

@@ -10,9 +10,9 @@
 #include <glmixedbinding/Version.h>
 #include <glmixedbinding/Binding.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
-using namespace gl;
+using namespace glmixed;
 using namespace glmixedbinding;
 
 class MultiContext_test : public testing::Test

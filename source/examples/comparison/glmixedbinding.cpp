@@ -5,7 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include <glmixedbinding/AbstractFunction.h>
 
@@ -18,7 +18,7 @@
 #include <glmixedbinding/FunctionCall.h>
 
 
-using namespace gl;
+using namespace glmixed;
 
 namespace
 {
@@ -48,8 +48,8 @@ void glmixedbinding_error(bool enable)
 
         glmixedbinding::Binding::setAfterCallback([](const glmixedbinding::FunctionCall &)
         {
-            gl::GLenum error = gl::glGetError();
-            if (error != gl::GL_NO_ERROR)
+            glmixed::GLenum error = glmixed::glGetError();
+            if (error != glmixed::GL_NO_ERROR)
                 std::cout << "Error: " << error << std::endl;
         });
     }

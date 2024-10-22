@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include <glmixedbinding/gl/types.h>
+#include <glmixedbinding/glmixed/types.h>
 
 #include <chrono>
 
@@ -25,20 +25,20 @@ public:
 protected:
     bool m_initialized;
 
-    gl::GLint a_vertex;
-    gl::GLint u_transform;
-    gl::GLint u_time;
-    gl::GLint u_numcubes;
-    gl::GLint u_terrain;
-    gl::GLint u_patches;
+    glmixed::GLint a_vertex;
+    glmixed::GLint u_transform;
+    glmixed::GLint u_time;
+    glmixed::GLint u_numcubes;
+    glmixed::GLint u_terrain;
+    glmixed::GLint u_patches;
 
-    gl::GLuint m_vao;
-    gl::GLuint m_indices;
-    gl::GLuint m_vertices;
+    glmixed::GLuint m_vao;
+    glmixed::GLuint m_indices;
+    glmixed::GLuint m_vertices;
 
-    gl::GLuint m_program;
+    glmixed::GLuint m_program;
 
-    gl::GLuint m_textures[2];
+    glmixed::GLuint m_textures[2];
     
     float m_a;
     int m_numcubes;

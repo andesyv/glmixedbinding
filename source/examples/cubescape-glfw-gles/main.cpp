@@ -8,7 +8,7 @@
 #include <glmixedbinding/FunctionCall.h>
 #include <glmixedbinding/CallbackMask.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 #include <glmixedbinding/getProcAddress.h>
 
 #include <glmixedbinding-aux/ContextInfo.h>
@@ -20,7 +20,7 @@
 #include <CubeScape.h>
 
 
-using namespace gl;
+using namespace glmixed;
 using namespace glmixedbinding;
 
 

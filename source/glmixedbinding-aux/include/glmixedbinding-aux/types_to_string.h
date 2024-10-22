@@ -68,21 +68,21 @@ GLMIXEDBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream,
 
 /**
 *  @brief
-*    A specialized ostream operator for the gl::GLenum Value template
+*    A specialized ostream operator for the glmixed::GLenum Value template
 */
 template <>
 GLMIXEDBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glmixed::GLenum> & value);
 
 /* <- ToDo: Add back second * when implementing this function again
 *  @brief
-*    A specialized ostream operator for the gl::GLbitfield Value template
+*    A specialized ostream operator for the glmixed::GLbitfield Value template
 */
 /*template <>
 GLMIXEDBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glmixed::GLbitfield> & value);*/
 
 /**
 *  @brief
-*    A specialized ostream operator for the gl::GLenum Value template
+*    A specialized ostream operator for the glmixed::GLenum Value template
 */
 template <>
 GLMIXEDBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glmixed::GLboolean> & value);

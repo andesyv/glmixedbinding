@@ -10,12 +10,12 @@
 #include <cpplocate/cpplocate.h>
 #endif
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include "glutils.h"
 #include "RawFile.h"
 
-using namespace gl;
+using namespace glmixed;
 
 namespace
 {
@@ -37,7 +37,7 @@ bool readFile(const std::string & filePath, std::string & content)
 std::string determineDataPath()
 {
 #ifdef cpplocate_FOUND
-    std::string path = cpplocate::locatePath("data/cubescape-gles", "share/glmixedbinding/cubescape-gles", reinterpret_cast<void *>(&gl::glCreateShader));
+    std::string path = cpplocate::locatePath("data/cubescape-gles", "share/glmixedbinding/cubescape-gles", reinterpret_cast<void *>(&glmixed::glCreateShader));
     if (path.empty()) path = "./data";
     else              path = path + "/data";
 #else

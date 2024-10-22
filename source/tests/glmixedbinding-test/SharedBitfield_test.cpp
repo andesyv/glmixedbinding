@@ -1,7 +1,7 @@
 
 #include <gmock/gmock.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include <glmixedbinding/SharedBitfield.h>
 
@@ -61,15 +61,15 @@ TEST(SharedBitfield, Usage1a)
 
 TEST(SharedBitfield, Usage1b)
 {
-    gl::ClearBufferMask bitsA_a = gl::ClearBufferMask::GL_ACCUM_BUFFER_BIT;
-    gl::ClearBufferMask bitsA_b = gl::ClearBufferMask::GL_DEPTH_BUFFER_BIT;
+    glmixed::ClearBufferMask bitsA_a = glmixed::ClearBufferMask::GL_ACCUM_BUFFER_BIT;
+    glmixed::ClearBufferMask bitsA_b = glmixed::ClearBufferMask::GL_DEPTH_BUFFER_BIT;
 
-    gl::ClearBufferMask bitsA_c = bitsA_a | bitsA_b;
+    glmixed::ClearBufferMask bitsA_c = bitsA_a | bitsA_b;
 
     bitsA_c |= bitsA_b;
 
-    SharedBitfield<gl::ClearBufferMask, gl::AttribMask> shared1 = bitsA_a;
-    SharedBitfield<gl::ClearBufferMask, gl::AttribMask> shared2 = bitsA_b;
+    SharedBitfield<glmixed::ClearBufferMask, glmixed::AttribMask> shared1 = bitsA_a;
+    SharedBitfield<glmixed::ClearBufferMask, glmixed::AttribMask> shared2 = bitsA_b;
 
     shared1 |= shared2;
 

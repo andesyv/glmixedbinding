@@ -11,7 +11,7 @@
 #include <glmixedbinding/Version.h>
 #include <glmixedbinding/glmixedbinding.h>
 
-#include <glmixedbinding/gl/gl.h>
+#include <glmixedbinding/glmixed/glmixed.h>
 
 #include <glmixedbinding-aux/Meta.h>
 #include <glmixedbinding-aux/ContextInfo.h>
@@ -19,7 +19,7 @@
 #include <glmixedbinding-aux/types_to_string.h>
 
 
-using namespace gl;
+using namespace glmixed;
 using namespace glmixedbinding;
 
 
