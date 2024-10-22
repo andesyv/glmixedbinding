@@ -100,20 +100,15 @@ option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git s
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(IDE_FOLDER "")
 
-# Declare project
-project(${META_PROJECT_NAME} C CXX)
-
 # When building examples, we might need to fetch packages via VCPKG. So configure VCPKG to be available
 if (OPTION_BUILD_EXAMPLES)
-    include(cmake/ConfigureVCPKGToolchain.cmake)
+    include(cmake/ConfigureVCPKGToolchain.cmake)    
 
-    # Check for glfw3 and request it to be fetched from VCPKG if not available
-    find_package(glfw3 QUIET)
-    if (NOT glfw3_FOUND)
-        list (APPEND VCPKG_MANIFEST_FEATURES "examples")
-    endif ()
-    
+    list (APPEND VCPKG_MANIFEST_FEATURES "examples")
 endif ()
+
+# Declare project
+project(${META_PROJECT_NAME} C CXX)
 
 # Get git revision
 if (OPTION_USE_GIT_INFORMATION AND GLMIXEDBINDING_BUILD_AS_ROOT)
