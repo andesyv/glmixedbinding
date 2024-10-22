@@ -102,8 +102,8 @@ set(IDE_FOLDER "")
 
 # When building examples, we might need to fetch packages via VCPKG. So configure VCPKG to be available
 if (OPTION_BUILD_EXAMPLES)
-    include(cmake/ConfigureVCPKGToolchain.cmake)    
-
+    set(VCPKG_PREFER_SYSTEM_LIBS ON)
+    include(cmake/ConfigureVCPKGToolchain.cmake)
     list (APPEND VCPKG_MANIFEST_FEATURES "examples")
 endif ()
 
