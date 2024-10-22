@@ -100,6 +100,9 @@ option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git s
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(IDE_FOLDER "")
 
+# Declare project
+project(${META_PROJECT_NAME} C CXX)
+
 # When building examples, we might need to fetch packages via VCPKG. So configure VCPKG to be available
 if (OPTION_BUILD_EXAMPLES)
     include(cmake/ConfigureVCPKGToolchain.cmake)
@@ -111,9 +114,6 @@ if (OPTION_BUILD_EXAMPLES)
     endif ()
     
 endif ()
-
-# Declare project
-project(${META_PROJECT_NAME} C CXX)
 
 # Get git revision
 if (OPTION_USE_GIT_INFORMATION AND GLMIXEDBINDING_BUILD_AS_ROOT)
