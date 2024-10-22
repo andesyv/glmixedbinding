@@ -19,7 +19,11 @@ namespace glmixedbinding {
 ProcAddress getProcAddress(const char * name)
 {
     // With two APIs we have no clue which one should be used by default. So just load any of the two and use the first one available.
+#ifdef WINDOWS_STORE
+    static auto glModule = LoadPackagedLibrary(_T("OPENGL32.DLL"), 0);
+#else
     static auto glModule = LoadLibrary(_T("OPENGL32.DLL"));
+#endif
     if (glModule != nullptr)
     {
         // Prevent static linking of opengl32
@@ -40,7 +44,11 @@ ProcAddress getProcAddress(const char * name)
     }
 
 
+#ifdef WINDOWS_STORE
+    static auto glesModule = LoadPackagedLibrary(_T("libGLESv2.DLL"), 0);
+#else
     static auto glesModule = LoadLibrary(_T("libGLESv2.DLL"));
+#endif
     if (glesModule != nullptr)
     {
         // Prevent static linking of opengl32

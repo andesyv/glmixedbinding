@@ -283,6 +283,10 @@ target_link_libraries(${target}
 # Compile definitions
 # 
 
+if (CMAKE_SYSTEM_NAME STREQUAL "WindowsStore")
+    target_compile_definitions(${target} PRIVATE SYSTEM_WINDOWS WINDOWS_STORE)
+endif()
+
 target_compile_definitions(${target}
     PRIVATE
     # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
