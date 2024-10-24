@@ -31,6 +31,11 @@ typedef void *GLhandleARB;
 #else
 typedef unsigned int GLhandleARB;
 #endif
+using EGLchar = char;
+using EGLint = int;
+using EGLNativeDisplayType = void *;
+using EGLNativePixmapType = void *;
+using EGLNativeWindowType = void *;
 using GLbitfield = unsigned int;
 using GLbyte = khronos_int8_t;
 using GLchar = char;

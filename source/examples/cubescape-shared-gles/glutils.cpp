@@ -5,7 +5,7 @@
 #include <math.h>
 
 
-#include <glmixedbinding/gl30/glmixed.h>
+#include <glmixedbinding/gl30/gl.h>
 
 
 using namespace gl30;

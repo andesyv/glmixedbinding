@@ -12,7 +12,7 @@
 #include <glmixedbinding/FunctionCall.h>
 #include <glmixedbinding/Binding.h>
 
-#include <glmixedbinding/gl32/glmixed.h>
+#include <glmixedbinding/gl32/gl.h>
 
 #include <glmixedbinding-aux/Meta.h>
 #include <glmixedbinding-aux/ContextInfo.h>

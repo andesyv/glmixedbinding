@@ -5,7 +5,7 @@
 #include <math.h>
 
 
-#include <glmixedbinding/gl32core/glmixed.h>
+#include <glmixedbinding/gl32core/gl.h>
 
 
 using namespace gl32core;

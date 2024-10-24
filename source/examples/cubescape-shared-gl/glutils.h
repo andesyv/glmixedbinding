@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include <glmixedbinding/gl32core/glmixed.h>
+#include <glmixedbinding/gl32core/gl.h>
 
 void compile_info(const gl32core::GLuint shader);
 void link_info(const gl32core::GLuint program);
