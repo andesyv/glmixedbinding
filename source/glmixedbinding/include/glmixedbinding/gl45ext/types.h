@@ -62,7 +62,6 @@ using glmixed::OcclusionQueryEventMaskAMD;
 using glmixed::PathFontStyle;
 using glmixed::PathMetricMask;
 using glmixed::PerformanceQueryCapsMaskINTEL;
-using glmixed::SyncObjectMask;
 using glmixed::TextureStorageMaskAMD;
 using glmixed::UseProgramStageMask;
 using glmixed::VertexHintsMaskPGI;
