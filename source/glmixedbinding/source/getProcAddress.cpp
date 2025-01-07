@@ -27,23 +27,49 @@ ProcAddress getProcAddress(const char * name)
     if (glModule != nullptr)
     {
         // Prevent static linking of opengl32
-        static auto glWglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glModule, "wglGetProcAddress"));
-        assert(glWglGetProcAddress_ != nullptr);
-
-        auto procAddress = glWglGetProcAddress_(name);
-        if (procAddress != nullptr)
+        static auto wglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glModule, "wglGetProcAddress"));
+        if (wglGetProcAddress_ != nullptr)
         {
-            return reinterpret_cast<ProcAddress>(procAddress);
+            auto procAddress = wglGetProcAddress_(name);
+            if (procAddress != nullptr)
+            {
+                return reinterpret_cast<ProcAddress>(procAddress);
+            }
         }
 
-        procAddress = (void *) ::GetProcAddress(glModule, name);
+        auto procAddress = (void *) ::GetProcAddress(glModule, name);
         if (procAddress != nullptr)
         {
             return reinterpret_cast<ProcAddress>(procAddress);
         }
     }
 
+    // GL ES can also be loaded via EGL (even on Windows), in which case eglGetProcAddress is the function that decides where the gl implementations are loaded from
+#ifdef WINDOWS_STORE
+    static auto eglModule = LoadPackagedLibrary(_T("libEGL.DLL"), 0);
+#else
+    static auto eglModule = LoadLibrary(_T("libEGL.DLL"));
+#endif
+    if (eglModule != nullptr)
+    {
+        static auto eglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(eglModule, "eglGetProcAddress"));
+        if (eglGetProcAddress_ != nullptr)
+        {
+            auto procAddress = eglGetProcAddress_(name);
+            if (procAddress != nullptr)
+            {
+                return reinterpret_cast<ProcAddress>(procAddress);
+            }
+        }
 
+        auto procAddress = (void *) ::GetProcAddress(eglModule, name);
+        if (procAddress != nullptr)
+        {
+            return reinterpret_cast<ProcAddress>(procAddress);
+        }
+    }
+
+    // Finally, on Windows, certain drivers (i.e. NVidia) also apparently exposes wglGetProcAddress through libGLESv2.dll
 #ifdef WINDOWS_STORE
     static auto glesModule = LoadPackagedLibrary(_T("libGLESv2.DLL"), 0);
 #else
@@ -51,17 +77,17 @@ ProcAddress getProcAddress(const char * name)
 #endif
     if (glesModule != nullptr)
     {
-        // Prevent static linking of opengl32
-        static auto glesWglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glesModule, "wglGetProcAddress"));
-        assert(glesWglGetProcAddress_ != nullptr);
-
-        auto procAddress = glesWglGetProcAddress_(name);
-        if (procAddress != nullptr)
+        static auto wglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>((uintptr_t) ::GetProcAddress(glesModule, "wglGetProcAddress"));
+        if (wglGetProcAddress_ != nullptr)
         {
-            return reinterpret_cast<ProcAddress>(procAddress);
+            auto procAddress = wglGetProcAddress_(name);
+            if (procAddress != nullptr)
+            {
+                return reinterpret_cast<ProcAddress>(procAddress);
+            }
         }
 
-        procAddress = (void *) ::GetProcAddress(glesModule, name);
+        auto procAddress = (void *) ::GetProcAddress(glesModule, name);
         if (procAddress != nullptr)
         {
             return reinterpret_cast<ProcAddress>(procAddress);
